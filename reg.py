@@ -10,18 +10,20 @@ class Vehicle:
     id: int | None
 
 
-DATABASE = {
-    "AB01 CDE": Vehicle("AB01 CDE", 2001, 12345),
-    "FG02 HJK": Vehicle("FG02 HJK", 2002, 67890),
-    "L33T H4X0R": Vehicle("L33T H4X0R", 2022, None),
-}
+class Database:
+    vehicles: dict[str, Vehicle]
 
+    def __init__(self):
+        self._vehicles = {}
 
-def vehicle_id_from_reg(database: dict[str, Vehicle], reg: str) -> int | None:
-    """Return the vehicle ID for the given registration number."""
-    return database[reg].id
+    def register(self, vehicle: Vehicle) -> None:
+        self._vehicles[vehicle.reg] = vehicle
 
+    def get_vehicle(self, reg: str) -> Vehicle:
+        return self._vehicles[reg]
 
-def total_registration_numbers(database: dict[str, Vehicle]) -> int:
-    """Return the total number of registration numbers in the database."""
-    return len(database)
+    def get_vehicle_id_from_reg(self, reg: str) -> int | None:
+        return self._vehicles[reg].id
+
+    def total_registration_numbers(self) -> int:
+        return len(self._vehicles)
