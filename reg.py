@@ -20,3 +20,8 @@ DATABASE = {
 def vehicle_id_from_reg(database: dict[str, Vehicle], reg: str) -> int | None:
     """Return the vehicle ID for the given registration number."""
     return database[reg].id
+
+
+def total_registration_numbers(database: dict[str, Vehicle]) -> int:
+    """Return the total number of registration numbers in the database."""
+    return len(database)
