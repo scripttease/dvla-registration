@@ -27,3 +27,6 @@ class Database:
 
     def total_registration_numbers(self) -> int:
         return len(self._vehicles)
+
+    def get_vehicles(self) -> list[Vehicle]:
+        return list(self._vehicles.values())
